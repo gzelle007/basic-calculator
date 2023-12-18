@@ -1,0 +1,77 @@
+*, *::before , *::after {
+    box-sizing: border-box;
+    font-family: "Helvetica", sans-serif;
+    font-weight: normal;
+}
+
+body {
+    padding: 0; margin: 0;
+    background: linear-gradient(to right, #8e3de2, #f6416c);
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #000;
+}
+
+.calculator-grid {
+    display: grid;
+    /* aligns calculator to the center of the page on x-axis */
+    justify-content: center;
+    /* align-items: center; on y-axis*/
+    align-content: center;
+    /* minimun height of 100% the viewport */
+    min-height: 100vh;
+    /* states the grid template to align buttons in grid format */
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+
+/* Button characteristics */
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* Button hover characteristics */
+.calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.no-btn {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* calls on buttons with 2 column span or span-two class in HTML */
+.span-two {
+    grid-column: span 2;
+}
+
+/* Display calculation output */
+.output {
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, 0.75);
+    /* Allows output to break when full line is used up and returns expands to next line below */
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* Characteristic of previous numbers keyed display */
+.output .previous-operand {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.5rem;
+}
+
+/* Characteristic of current numbers keyed display */
+.output .current-operand {
+    color: white;
+    font-size: 3rem;
+}
